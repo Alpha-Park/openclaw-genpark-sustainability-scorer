@@ -1,0 +1,10 @@
+{
+  "name": "openclaw-genpark-sustainability-scorer",
+  "version": "1.0.0",
+  "description": "OpenClaw GenPark Sustainability Scorer - Cradle-to-gate LCA carbon footprint estimation, packaging circularity recyclability ratio, and ESG carbon credit offset linear optimization with zero dependencies.",
+  "tools": [
+    "calculate_cradle_to_gate_carbon_footprint",
+    "evaluate_packaging_circularity_ratio",
+    "optimize_esg_carbon_credit_allocation"
+  ]
+}
