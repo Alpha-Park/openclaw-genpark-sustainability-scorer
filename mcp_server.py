@@ -8,18 +8,9 @@ import json
 from typing import Dict, Any, List
 from client import OpenClawGenParkSustainabilityScorer
 
-try:
-    from mcp.server.fastmcp import FastMCP
-    mcp = FastMCP("openclaw-genpark-sustainability-scorer")
-except ImportError:
-    class MockFastMCP:
-        def __init__(self, name):
-            self.name = name
-        def tool(self):
-            def decorator(f):
-                return f
-            return decorator
-    mcp = MockFastMCP("openclaw-genpark-sustainability-scorer")
+from mcp.server.fastmcp import FastMCP
+
+mcp = FastMCP('openclaw-genpark-sustainability-scorer')
 
 scorer = OpenClawGenParkSustainabilityScorer()
 
@@ -58,9 +49,7 @@ def optimize_esg_carbon_credit_allocation(
     return json.dumps(res, indent=2)
 
 def main():
-    print("Testing Sustainability Scorer:")
-    bom = [{"material": "aluminum", "weight_kg": 0.5}, {"material": "paper_cardboard", "weight_kg": 0.2}]
-    print(calculate_cradle_to_gate_carbon_footprint(bom, 800.0))
+    mcp.run(transport="stdio")
 
 if __name__ == "__main__":
     main()
